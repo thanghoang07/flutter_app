@@ -15,10 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: CustomTheme.lightTheme,
-      darkTheme: CustomTheme.darkTheme,
-      themeMode: currentTheme.currentTheme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: CustomTheme.darkTheme,
+      home: const MyHomePage(title: 'Thanghoang'),
     );
   }
 }
