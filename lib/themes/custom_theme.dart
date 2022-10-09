@@ -24,9 +24,12 @@ class CustomTheme with ChangeNotifier {
 
   static ThemeData get darkTheme {
     return ThemeData(
-        primaryColor: Colors.grey,
-        scaffoldBackgroundColor: Colors.black,
-        textTheme: ThemeData.dark().textTheme,
+        brightness: Brightness.dark,
+        primaryColor: const Color.fromRGBO(56, 62, 72, 1),
+        scaffoldBackgroundColor: const Color.fromRGBO(229, 229, 229, 1),
+        textTheme: ThemeData
+            .dark()
+            .textTheme,
         buttonTheme: ButtonThemeData(
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
@@ -35,3 +38,8 @@ class CustomTheme with ChangeNotifier {
             buttonColor: Colors.pinkAccent));
   }
 }
+  extension PriceColor on ThemeData{
+    Color get priceColor {
+     return const Color.fromRGBO(220, 212, 201, 1);
+    }
+  }

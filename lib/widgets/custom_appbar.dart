@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thanghoang/themes/custom_theme.dart';
+import 'package:thanghoang/utils/constants.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomAppBar({super.key, required this.title});
@@ -19,12 +21,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: Colors.black,
+      shadowColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       title: Text(
         widget.title,
-        style: const TextStyle(
-            color: Colors.white,
-            backgroundColor: Colors.transparent,
+        style: TextStyle(
+            color: Theme.of(context).priceColor,
         ),
       ),
     );
