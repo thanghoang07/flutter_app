@@ -20,12 +20,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      shadowColor: Theme.of(context).primaryColor,
-      backgroundColor: Theme.of(context).primaryColor,
+      shadowColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
       title: Text(
         widget.title,
-        style: TextStyle(
-            color: Theme.of(context).priceColor,
+        style: const TextStyle(
+            color: Colors.transparent,
         ),
       ),
     );

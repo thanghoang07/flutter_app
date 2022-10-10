@@ -26,16 +26,11 @@ class CustomTheme with ChangeNotifier {
     return ThemeData(
         brightness: Brightness.dark,
         primaryColor: const Color.fromRGBO(56, 62, 72, 1),
-        scaffoldBackgroundColor: const Color.fromRGBO(229, 229, 229, 1),
+        scaffoldBackgroundColor: const Color.fromRGBO(235, 235, 230, 1),
         textTheme: ThemeData
             .dark()
             .textTheme,
-        buttonTheme: ButtonThemeData(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-            buttonColor: Colors.pinkAccent));
+        );
   }
 }
   extension PriceColor on ThemeData{
