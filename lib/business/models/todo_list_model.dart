@@ -6,7 +6,7 @@ import 'package:thanghoang/business/services/db/db_provider.dart';
 
 class TodoListModel extends Model {
   // ObjectDB db;
-  var _db = DBProvider.db;
+  final _db = DBProvider.db;
   List<Todo> get todos => _todos.toList();
   List<Task> get tasks => _tasks.toList();
   int getTaskCompletionPercent(Task task) =>
@@ -18,7 +18,7 @@ class TodoListModel extends Model {
   bool _isLoading = false;
   List<Task> _tasks = [];
   List<Todo> _todos = [];
-  Map<String, int> _taskCompletionPercentage = Map();
+  final Map<String, int> _taskCompletionPercentage = {};
 
   static TodoListModel of(BuildContext context) =>
       ScopedModel.of<TodoListModel>(context);
@@ -42,7 +42,7 @@ class TodoListModel extends Model {
     _todos = await _db.getAllTodo();
     _tasks.forEach((it) => _calcTaskCompletionPercent(it.id));
     _isLoading = false;
-    await Future.delayed(Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 300));
     notifyListeners();
   }
 
@@ -103,7 +103,6 @@ class TodoListModel extends Model {
 
   _syncJob(Todo todo) {
     _calcTaskCompletionPercent(todo.parent);
-    // _syncTodoToDB();
   }
 
   void _calcTaskCompletionPercent(String taskId) {
@@ -117,10 +116,5 @@ class TodoListModel extends Model {
       _taskCompletionPercentage[taskId] =
           (totalCompletedTodos / totalTodos * 100).toInt();
     }
-    // return todos.fold(0, (total, todo) => todo.isCompleted ? total + scoreOfTask : total);
   }
-
-// Future<int> _syncTodoToDB() async {
-//   return await db.update({'user': 'guest'}, {'todos': _todos});
-// }
 }

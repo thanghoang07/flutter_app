@@ -9,7 +9,7 @@ class Todo {
   final int isCompleted;
 
   Todo(this.name, {required this.parent, this.isCompleted = 0, String? id})
-      : this.id = id ?? Uuid().generateV4();
+      : id = id ?? Uuid().generateV4();
 
   Todo copy({String? name, int? isCompleted, String? id, String? parent}) {
     return Todo(
