@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:thanghoang/themes/custom_theme.dart';
-import 'package:thanghoang/utils/constants.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomAppBar({super.key, required this.title});

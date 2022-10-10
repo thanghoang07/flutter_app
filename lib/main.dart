@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thanghoang/pages/myHomePage.dart';
 import 'package:thanghoang/themes/custom_theme.dart';
-import 'package:thanghoang/utils/constants.dart';
 
 void main() {
   runApp(const MyApp());
