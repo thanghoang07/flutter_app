@@ -17,4 +17,9 @@ class DateTimeUtils {
     return DateFormat('d').format(now);
   }
 
+  static String get currentYear {
+    DateTime now = DateTime.now();
+    return DateFormat('y').format(now);
+  }
+
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:thanghoang/business/models/choice_card.dart';
+
 import 'package:thanghoang/business/models/hero_id_model.dart';
 import 'package:thanghoang/business/models/task_model.dart';
 import 'package:thanghoang/business/models/todo_list_model.dart';
@@ -8,7 +8,6 @@ import 'package:thanghoang/business/utils/color_utils.dart';
 import 'package:thanghoang/business/utils/datetime_utils.dart';
 import 'package:thanghoang/resources/pages/add_task_screen.dart';
 import 'package:thanghoang/resources/pages/detail_screen.dart';
-import 'package:thanghoang/resources/pages/privacy_policy.dart';
 import 'package:thanghoang/resources/routes/scale_route.dart';
 import 'package:thanghoang/resources/themes/gradient_background.dart';
 import 'package:thanghoang/resources/themes/task_progress_indicator.dart';
@@ -48,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
     );
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
     _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           var _tasks = model.tasks;
           var _todos = model.todos;
           var backgroundColor = _tasks.isEmpty || _tasks.length == _currentPageIndex
-              ? Colors.blueGrey
+              ? Colors.lightBlueAccent
               : ColorUtils.getColorFrom(id: _tasks[_currentPageIndex].color);
           if (!_isLoading) {
             // move the animation value towards upperbound only when loading is complete
@@ -79,10 +78,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 backgroundColor: Colors.transparent,
               ),
               body: _isLoading
-                  ? Center(
+                  ? const Center(
                 child: CircularProgressIndicator(
                   strokeWidth: 1.0,
-                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
                 ),
               )
                   : FadeTransition(
@@ -95,17 +94,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Container(
-                            child: Text(
-                              widget.currentDay(context),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline1
-                                  ?.copyWith(color: Colors.white),
-                            ),
+                          Text(
+                            widget.currentDay(context),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1
+                                ?.copyWith(color: Colors.white),
                           ),
                           Text(
-                            '${DateTimeUtils.currentDate} ${DateTimeUtils.currentMonth}',
+                            '${DateTimeUtils.currentDate} - ${DateTimeUtils.currentMonth} - ${DateTimeUtils.currentYear}',
                             style: Theme.of(context)
                                 .textTheme
                                 .subtitle1
@@ -143,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           controller: _pageController,
                           itemBuilder: (BuildContext context, int index) {
                             if (index == _tasks.length) {
-                              return const AddPageCard(color: Colors.blueGrey,);
+                              return const AddPageCard(color: Colors.blueGrey);
                             } else {
                               return TaskCard(
                                 backdropKey: _backdropKey,
@@ -160,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                         ),
                       ),
                     ),
-                    Container(margin: EdgeInsets.only(bottom: 32.0)),
+                    Container(margin: const EdgeInsets.only(bottom: 32.0)),
                   ],
                 ),
               ),
@@ -184,11 +181,9 @@ class AddPageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
       elevation: 4.0,
-      margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
       child: Material(
         borderRadius: BorderRadius.circular(16.0),
         color: Colors.white,
@@ -196,23 +191,21 @@ class AddPageCard extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => AddTaskScreen(),
-              ),
+              MaterialPageRoute(builder: (context) => AddTaskScreen()),
             );
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.add,
-                  size: 52.0,
+                  size: 65.0,
                   color: color,
                 ),
                 Container(
-                  height: 8.0,
+                  height: 16.0,
                 ),
                 Text(
                   'Add Category',
@@ -276,10 +269,10 @@ class TaskCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.0),
         ),
         elevation: 4.0,
-        margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
         color: Colors.white,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -291,11 +284,9 @@ class TaskCard extends StatelessWidget {
                   id: task.color,
                 ),
               ),
-              Spacer(
-                flex: 8,
-              ),
+              const Spacer(flex: 8,),
               Container(
-                margin: EdgeInsets.only(bottom: 4.0),
+                margin: const EdgeInsets.only(bottom: 4.0),
                 child: Hero(
                   tag: heroIds.remainingTaskId,
                   child: Text(
@@ -317,7 +308,7 @@ class TaskCard extends StatelessWidget {
                           ?.copyWith(color: Colors.black54)),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Hero(
                 tag: heroIds.progressId,
                 child: TaskProgressIndicator(
