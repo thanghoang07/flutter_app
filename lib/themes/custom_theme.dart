@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thanghoang/styles/colors.dart';
 
 class CustomTheme with ChangeNotifier {
   static bool _isDarkTheme = true;
@@ -12,29 +13,24 @@ class CustomTheme with ChangeNotifier {
 
   static ThemeData get lightTheme {
     return ThemeData(
-        primaryColor: Colors.pink,
-        scaffoldBackgroundColor: Colors.white,
+        primaryColor: primaryColorThemeLight,
+        scaffoldBackgroundColor: borderColor,
         buttonTheme: ButtonThemeData(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
+            splashColor: transparentColor,
+            highlightColor: transparentColor,
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-            buttonColor: Colors.orange));
+            buttonColor: orangeColor));
   }
 
   static ThemeData get darkTheme {
     return ThemeData(
         brightness: Brightness.dark,
-        primaryColor: const Color.fromRGBO(56, 62, 72, 1),
-        scaffoldBackgroundColor: const Color.fromRGBO(235, 235, 230, 1),
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: backgroundColor,
         textTheme: ThemeData
             .dark()
             .textTheme,
         );
   }
 }
-  extension PriceColor on ThemeData{
-    Color get priceColor {
-     return const Color.fromRGBO(220, 212, 201, 1);
-    }
-  }

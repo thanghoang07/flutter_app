@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thanghoang/styles/colors.dart';
 import 'package:thanghoang/themes/custom_theme.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
@@ -11,7 +12,7 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(20);
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
@@ -20,14 +21,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      shadowColor: Colors.transparent,
-      backgroundColor: Colors.transparent,
-      title: Text(
-        widget.title,
-        style: const TextStyle(
-            color: Colors.transparent,
-        ),
-      ),
+      shadowColor: transparentColor,
+      backgroundColor: transparentColor,
     );
   }
 }
